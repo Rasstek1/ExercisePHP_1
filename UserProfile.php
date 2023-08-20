@@ -1,4 +1,5 @@
 <?php
+//Creation de la classe UserProfile avec ses propriétés et ses méthodes
 
 class UserProfile {
     // Propriétés privées de la classe
