@@ -43,22 +43,22 @@ session_start();
                 <div class="mb-3">
                     <label class="form-label">Centres d'intérêt</label>
                     <?php
-    $interets = ["Sport", "Musique", "Lecture", "Voyage", "Cinéma"];
-    foreach ($interets as $interet) {
-        echo '<div class="form-check">';
-                    echo ' <input class="form-check-input" type="checkbox" name="interets[]" value="' . $interet . '"
+                    $interets = ["Sport", "Musique", "Lecture", "Voyage", "Cinéma"];
+                    foreach ($interets as $interet) {
+                        echo '<div class="form-check">';
+                        echo ' <input class="form-check-input" type="checkbox" name="interets[]" value="' . $interet . '"
                                   id="' . $interet . '">';
-                    echo ' <label class="form-check-label" for="' . $interet . '">' . $interet . '</label>';
-                    echo '
+                        echo ' <label class="form-check-label" for="' . $interet . '">' . $interet . '</label>';
+                        echo '
                 </div>
                 ';
-                }
-                ?>
+                    }
+                    ?>
 
 
-                <div class="mb-3">
-                    <button type="submit" class="btn btn-primary" >Créer le profil</button>
-                </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Créer le profil</button>
+                    </div>
 
             </form>
 

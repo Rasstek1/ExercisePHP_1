@@ -1,19 +1,20 @@
 <?php
-session_start();
-//Creation de la classe UserProfile avec ses propriétés et ses méthodes
+session_start(); // Démarrage de la session PHP
 
+/*******************************CLASSE*************************************/
+// Création de la classe UserProfile avec ses propriétés et ses méthodes
 class UserProfile {
     // Propriétés privées de la classe
     private string $nom;
     private string $prenom;
     private string $age;
-    private $dateNaissance; // Utilisation correcte du type "date"
+    private $dateNaissance; // Type non spécifié pour la date de naissance
+    private $photo;         // Type non spécifié pour la photo
+    private $interets;      // Type non spécifié pour les intérêts sera specifie plus tard dans le html
 
-    private $photo; // Utilisation correcte du type "photo"
 
-    private $interets; // Utilisation correcte du type "interets"
-
-    // Constructeur de la classe
+    /*******************************CONSTRUCTEUR*************************************/
+    // Initialisation des propriétés avec les valeurs passées en paramètre
     public function __construct(string $nom, string $prenom, string $age, $dateNaissance, $photo) {
         $this->nom = $nom;
         $this->prenom = $prenom;
@@ -22,7 +23,22 @@ class UserProfile {
         $this->photo = $photo;
     }
 
-    // Méthodes pour accéder aux propriétés privées
+
+    /*******************************METHODES*************************************/
+    // Méthodes d'accès (getters) pour les propriétés privées
+    // Les méthodes retournent la valeur de la propriété ou une valeur par défaut si elle est vide
+
+    //Fonction pour afficher les données du profil que je me sert pas en ce moment
+    //car je les ai fais separement en bas pour avoir le controle sur l'affichage
+   /* public function __toString(){
+        return $this->getNom() . " " .
+            $this->getPrenom() . " " .
+            $this->getAge() . " " .
+            $this->getDateNaissance() . " " .
+            $this->getPhoto() . " " .
+            $this->getInterets();
+
+}*/
     public function getNom(): string {
         if ($this->nom == "") {
             return "Nom non défini";
@@ -31,7 +47,6 @@ class UserProfile {
     }
 
     public function getPrenom(): string {
-
         if ($this->prenom == "") {
             return "Prénom non défini";
         }
@@ -61,26 +76,30 @@ class UserProfile {
 
     public function getInterets() {
         if (empty($this->interets)) {
-            return "Interets non définis";
+            return "Intérêts non définis";
         }
-        return implode(", ", $this->interets);  // Convertir le tableau en chaîne pour l'affichage
+        return implode(", ", $this->interets); // Convertir le tableau en chaîne pour l'affichage
     }
 
-
+    // Méthode d'accès (setter) pour définir les intérêts
     public function setInterets($interets) {
         $this->interets = $interets;
     }
 }
 
-/*Exemple d'utilisation Default
-$photoUtilisateur = "lien_vers_photo.jpg";
-$dateNaissanceUtilisateur = "2000-01-01"; // Format de date "AAAA-MM-JJ"
-$userProfile = new UserProfile("Doe", "John", "30", $dateNaissanceUtilisateur, $photoUtilisateur);
 
- Accéder aux informations de l'utilisateur
-echo "Nom: " . $userProfile->getNom() . "<br>";
-echo "Prénom: " . $userProfile->getPrenom() . "<br>";
-echo "Âge: " . $userProfile->getAge() . "<br>";
-echo "Date de naissance: " . $userProfile->getDateNaissance() . "<br>";
-echo "Photo: " . $userProfile->getPhoto() . "<br>";
+/*La classe UserProfile est une représentation d'un profil utilisateur avec les propriétés privées pour le nom,
+ le prénom, l'âge, la date de naissance, la photo et les centres d'intérêt. Le constructeur est utilisé pour
+ initialiser ces propriétés lors de la création d'une instance de la classe.
+
+Les méthodes d'accès (getters) permettent d'accéder aux valeurs des propriétés privées,
+avec des vérifications pour fournir une valeur par défaut si la propriété est vide.
+Une méthode supplémentaire (setter) est utilisée pour définir les centres d'intérêt.
+
+La propriété $interets n'est pas initialisée dans le constructeur, et elle peut être définie plus tard à
+l'aide de la méthode setInterets. La méthode getInterets utilise la fonction implode pour convertir le tableau
+d'intérêts en une chaîne de caractères pour l'affichage.
+
+Note : Les types de $dateNaissance, $photo, et $interets ne sont pas spécifiés dans ce code. Selon les besoins,
+ il peut être utile de les définir explicitement pour assurer une meilleure robustesse et clarté du code.
 */

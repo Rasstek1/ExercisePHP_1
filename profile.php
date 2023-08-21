@@ -36,19 +36,22 @@
                                     <p class="card-text">Âge : <?php echo $profile->getAge(); ?></p>
                                     <p class="card-text">Date de naissance
                                         : <?php echo $profile->getDateNaissance(); ?></p>
-                                    <!-- Affichage des centres d'intérêt -->
+
+                                    <!-- AFFICHAGE DES CENTRES D'INTERETS -->
                                     <p class="card-text">Centres d'intérêt :
                                         <?php
-                                        $interets = $profile->getInterets();
-                                        if (is_array($interets) && !empty($interets)):
-                                            echo implode(', ', $interets);
-                                        elseif (!is_array($interets) && $interets !== ""):
-                                            echo $interets;
+                                        $interets = $profile->getInterets(); // Récupère les centres d'intérêt du profil
+
+                                        if (is_array($interets) && !empty($interets)): // Si les centres d'intérêt sont un tableau et non vides
+                                            echo implode(', ', $interets); // Les convertit en une chaîne, séparée par des virgules, et les affiche
+                                        elseif (!is_array($interets) && $interets !== ""): // Si les centres d'intérêt ne sont pas un tableau et ne sont pas une chaîne vide
+                                            echo $interets; // Affiche directement les centres d'intérêt (peut être une chaîne déjà formatée)
                                         else:
-                                            echo 'Aucun';
+                                            echo 'Aucun'; // Si les centres d'intérêt ne sont ni un tableau ni une chaîne non vide, affiche "Aucun"
                                         endif;
                                         ?>
                                     </p>
+
                                     <form action="modifier_interets.php" method="post">
                                         <input type="hidden" name="profile_key" value="<?php echo $profileKey; ?>">
 
@@ -66,6 +69,7 @@
                 ';
                                             }
                                             ?>
+
 
                                             <input type="submit" value="Modifier">
                                     </form>

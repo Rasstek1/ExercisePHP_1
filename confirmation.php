@@ -1,4 +1,3 @@
-
 <?php
 
 
@@ -34,7 +33,7 @@ echo '    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootst
 echo '</head>';
 
 
-echo '<body class="bg-light d-flex justify-content-center align-items-center" style="height: 100vh;">';
+
 echo '<div class="container mt-5">';
 
 echo '<h1>Confirmation de la création du profil</h1>';
