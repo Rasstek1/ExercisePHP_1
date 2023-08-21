@@ -10,6 +10,8 @@ class UserProfile {
 
     private $photo; // Utilisation correcte du type "photo"
 
+    private $interets; // Utilisation correcte du type "interets"
+
     // Constructeur de la classe
     public function __construct(string $nom, string $prenom, string $age, $dateNaissance, $photo) {
         $this->nom = $nom;
@@ -54,6 +56,18 @@ class UserProfile {
             return "Photo non définie";
         }
         return $this->photo;
+    }
+
+    public function getInterets() {
+        if (empty($this->interets)) {
+            return "Interets non définis";
+        }
+        return implode(", ", $this->interets);  // Convertir le tableau en chaîne pour l'affichage
+    }
+
+
+    public function setInterets($interets) {
+        $this->interets = $interets;
     }
 }
 
