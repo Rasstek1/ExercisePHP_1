@@ -1,5 +1,7 @@
 <?php
-session_start();
+
+session_start(); // Ajoutez ceci pour démarrer la session
+
 require 'UserProfile.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -20,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: confirmation.php");
         exit;
     }
-
+////
     $photoName = basename($_FILES["photo"]["name"]);
     $targetPath = $targetDir . $photoName;
 
@@ -31,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["userProfiles"] = $_SESSION["userProfiles"] ?? [];
         $_SESSION["userProfiles"][] = $userProfile;
         $_SESSION["targetPath"] = $targetPath;
-        $_SESSION["currentUserProfile"] = $userProfile;
+        $_SESSION["currentUserProfile"] = serialize($userProfile); // Sérialisez l'objet ici
     } else {
         $_SESSION["error"] = "Erreur lors du déplacement du fichier téléchargé.";
     }
