@@ -1,7 +1,10 @@
-/*******************************AFFICHAGE************************************/
+
 <?php
-session_start();
-include 'UserProfile.php';
+
+
+
+require_once 'UserProfile.php'; // Si la classe UserProfile est définie dans un fichier séparé
+
 
 if (isset($_SESSION["error"])) {
     echo '<div class="alert alert-danger" role="alert">';
@@ -17,8 +20,7 @@ if (!isset($_SESSION["targetPath"]) || !isset($_SESSION["currentUserProfile"])) 
 
 // Récupération des données de la session
 $targetPath = $_SESSION["targetPath"];
-$userProfile = $_SESSION["currentUserProfile"];
-
+$userProfile = unserialize($_SESSION["currentUserProfile"]); // Désérialisez l'objet ici
 
 
 
@@ -37,7 +39,7 @@ echo '<div class="container mt-5">';
 
 echo '<h1>Confirmation de la création du profil</h1>';
 
-$moved = move_uploaded_file($_FILES["photo"]["tmp_name"], $targetPath);
+
 
 if (file_exists($targetPath)) {
     echo '<div class="alert alert-success" role="alert">Photo de profil téléchargée avec succès.</div>';
@@ -61,7 +63,7 @@ echo '</div>';
 
 
 echo '<div class="mt-5 text-center">';
-echo '    <a href="index.html" class="btn btn-primary">Créer un nouvel utilisateur</a>';
+echo '    <a href="index.php" class="btn btn-primary">Créer un nouvel utilisateur</a>';
 echo '    <a href="profile.php" class="btn btn-secondary ml-3">Voir les profils</a>';
 echo '</div>';
 

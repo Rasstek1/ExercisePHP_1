@@ -57,7 +57,7 @@ session_start();
 
 
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary" formaction="confirmation.php">Créer le profil</button>
+                    <button type="submit" class="btn btn-primary" >Créer le profil</button>
                 </div>
 
             </form>

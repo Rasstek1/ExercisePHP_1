@@ -1,4 +1,5 @@
 <?php
+session_start();
 //Creation de la classe UserProfile avec ses propriétés et ses méthodes
 
 class UserProfile {
